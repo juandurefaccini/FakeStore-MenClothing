@@ -11,5 +11,6 @@ fetch("https://fakestoreapi.com/products/category/men clothing")
       productsInfo.push(product);
     }
     localStorage.setItem("products",JSON.stringify(productsInfo))
+    localStorage.setItem("cartItemAmount",0)
     window.location.pathname = 'home.html'
   })

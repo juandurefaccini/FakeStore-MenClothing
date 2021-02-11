@@ -22,7 +22,7 @@
   .emptyCartMessage__msg {
     margin-top: 20px;
     font-size: 1.5rem;
-    text-justify: auto;
+    text-align: center;
   }
 
   .cartItem__img {

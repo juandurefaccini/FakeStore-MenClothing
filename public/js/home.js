@@ -17,7 +17,7 @@ function getLocalStorage(){
   if(productsInCartLocalStorage){
     productsInCart = JSON.parse(productsInCartLocalStorage)
   }
-  if(!cartItemAmountLocalStorage || cartItemAmountLocalStorage=='null'){ //Si es 0 o es null porque no se especifico
+  if(cartItemAmountLocalStorage == 0){ //Si es 0 o es null porque no se especifico
     console.log('Esconder item cant');
     document.querySelector(".basket__numberContainer").style.display = "none";
   }
@@ -53,12 +53,12 @@ function setAddCartListener(){
       elem.addEventListener("click", () => {
         parentNode = elem.parentNode;
         productId = parentNode.id;
-        if (cartAmount > 0){ //Solo la primera vez
-            showCartNumber()
+        if (cartAmount == 0){ //Solo la primera vez
+          showCartNumber()
         }
         cartAmount++;
         document.querySelector('.basket__number').innerHTML = cartAmount;
-        localStorage.setItem('cartItemAmount',cartAmount);
+        // localStorage.setItem('cartItemAmount',cartAmount);
         addProductToCart(productId);
       });
     });
@@ -113,10 +113,11 @@ function setModalListener() {
         const parentNode = elem.parentNode;
         // parentElement = elem.parentElement;
         const modalProductId = parentNode.id;
+        document.querySelector(".modal-body").id = modalProductId;
         document.querySelector(".modalItem__img").src = products[modalProductId].image;
         document.querySelector(".modalItem__title").innerHTML = products[modalProductId].title;
         document.querySelector(".modalItem__description").innerHTML = products[modalProductId].description;
-        document.querySelector(".modalItem__prize").innerHTML = products[modalProductId].price;
+        document.querySelector(".modalItem__prize").innerHTML = '$' + products[modalProductId].price;
         myModal.show();
       });
     })

@@ -5,8 +5,10 @@ var cartAmount = 0;
 
 const cart = document.querySelector("#cartList");
 
-document.querySelector("#navBar__basket").addEventListener("click", (elem) => {
-    window.location.pathname = 'home.html'
+document.querySelectorAll(".navBar__name,#navBar__basket").forEach((elem) => {
+  elem.addEventListener("click", () => {
+      window.location.pathname = 'home.html'
+  });
 });
 
 
