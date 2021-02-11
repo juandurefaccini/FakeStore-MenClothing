@@ -8,34 +8,37 @@ var cartAmount = 0;
 var productInfoModal = document.querySelector('#myModal');
 var myModal = new bootstrap.Modal(document.getElementById("myModal"));
 
+document.querySelector("#navBar__basket").addEventListener("click", () => {
+  localStorage.setItem("cartProducts",JSON.stringify(productsInCart)) //Al momento de pasar al carrito se actualiza el local storage
+  localStorage.setItem("cartItemAmount",cartAmount) //Al momento de pasar al carrito se actualiza el local storage
+    window.location.pathname = 'cart.html'
+});
 
 function getLocalStorage(){
   let productsLocalStorage = localStorage.getItem('products');
-  productsLocalStorage = JSON.parse(productsLocalStorage);
-  let cartItemAmountLocalStorage = localStorage.getItem('cartItemAmount');
-  let productsInCartLocalStorage = localStorage.getItem('cartProducts')
-  if(productsInCartLocalStorage){
-    productsInCart = JSON.parse(productsInCartLocalStorage)
+  productsLocalStorage = JSON.parse(productsLocalStorage); //Obtengo el arreglo de informacion de productos
+  let cartItemAmountLocalStorage = localStorage.getItem('cartItemAmount'); //Obtengo la cantidad de productos actual del local storage
+  let productsInCartLocalStorage = localStorage.getItem('cartProducts'); //Obtengo los indices de los productos que actualmente estan en el carrito
+  if(productsInCartLocalStorage){ //Si habia algun producto en el carrito
+    productsInCart = JSON.parse(productsInCartLocalStorage) //Se asigna a la variable
   }
-  if(cartItemAmountLocalStorage == 0){ //Si es 0 o es null porque no se especifico
-    console.log('Esconder item cant');
-    document.querySelector(".basket__numberContainer").style.display = "none";
+  if(cartItemAmountLocalStorage == 0){ //Si todavia no se agregaron elementos al carrito
+    document.querySelector(".basket__numberContainer").style.display = "none"; //Esconde el display de cantidad
   }
-  cartAmount = cartItemAmountLocalStorage
-  products = productsLocalStorage
+  cartAmount = cartItemAmountLocalStorage //Asigna la cantidad actual a la que viene del localStorage
+  products = productsLocalStorage //Los productos se actualizan con lo que viene del local storage
 }
 
-function getRandomInt(min, max) {
+function getRandomInt(min, max) { //Pequeña funcion para obtener un numero ranodom en un rango
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function addProductToCart(id){
+function addProductToCart(id){ //Agregar el id de un producto al arreglo de productos en carrito
     productsInCart.push(id)
 }
 
 function setFeaturedProduct() {
-    //Generar numero random que es la posicion del arreglo que se parseo del local storage
-    let productId = getRandomInt(0,products.length)
+    let productId = getRandomInt(0,products.length) //Obtengo el indice de un producto aleatorio para destacarlo
     document.querySelector('.homeScreen_featuredProductContainer').id = productId;
     document.querySelector('.homeScreen__featuredProduct img').src = products[productId].image;
     document.querySelector('.homeScreen__featuredProduct h2').innerHTML = products[productId].title;
@@ -44,29 +47,27 @@ function setFeaturedProduct() {
 }
 
 function showCartNumber(){
-    document.querySelector(".basket__numberContainer").style.display = "block";
+    document.querySelector(".basket__numberContainer").style.display = "block"; //Mostar el numero del carrito
 }
 
 function setAddCartListener(){
-    //Agregar los listeners para agregar al carrito
     document.querySelectorAll(".addToBasketButton").forEach((elem) => {
       elem.addEventListener("click", () => {
         parentNode = elem.parentNode;
-        productId = parentNode.id;
-        if (cartAmount == 0){ //Solo la primera vez
+        productId = parentNode.id; //Obtengo el id del nodo padre, donde almaeno el id del producto
+        if (cartAmount == 0){ //Si todavia no se agrego ninguno se muestra el numero del carrito, podria no estar el condicional pero se puede evaluar solo una vez
           showCartNumber()
         }
         cartAmount++;
-        document.querySelector('.basket__number').innerHTML = cartAmount;
-        // localStorage.setItem('cartItemAmount',cartAmount);
-        addProductToCart(productId);
+        document.querySelector('.basket__number').innerHTML = cartAmount; //Poner el numero al carrito
+        addProductToCart(productId); //Agregar al carrito
       });
     });
   }
 
 function setProductList(){
-    const parentList = document.querySelector("#homeScreen__productList");
-    for (product of products) {
+    const parentList = document.querySelector("#homeScreen__productList"); //Obtener padre de la lista de productos
+    for (product of products) { //Para cada producto en la lista de productos traida desde localStorage
         const item = `
         <div id="${product.id-1}" class="productListItemContainer">
           <div class="productList__item">
@@ -83,7 +84,7 @@ function setProductList(){
           </div>
           <button class="addToBasketButton">Agregar al carrito</button>
         </div>`;
-        parentList.innerHTML += item;
+        parentList.innerHTML += item; //Se concatena el nuevo html
     }
 }
 
@@ -91,27 +92,10 @@ function setCartNumber(){
     document.querySelector('.basket__number').innerHTML = cartAmount;
 }
 
-function setupHome(){
-    getLocalStorage()
-    setCartNumber()
-    setFeaturedProduct()
-    setProductList()
-    setModalListener()
-    setAddCartListener()
-}
-
-document.querySelector("#navBar__basket").addEventListener("click", () => {
-  localStorage.setItem("cartProducts",JSON.stringify(productsInCart))
-  localStorage.setItem("cartItemAmount",cartAmount)
-    window.location.pathname = 'cart.html'
-});
-
 function setModalListener() {
-    //Agregar los listeners para activar el modal
     document.querySelectorAll(".productList__item, .homeScreen__featuredProduct").forEach((elem) => {
       elem.addEventListener("click", function () {
         const parentNode = elem.parentNode;
-        // parentElement = elem.parentElement;
         const modalProductId = parentNode.id;
         document.querySelector(".modal-body").id = modalProductId;
         document.querySelector(".modalItem__img").src = products[modalProductId].image;
@@ -122,5 +106,14 @@ function setModalListener() {
       });
     })
   }
+
+function setupHome(){
+    getLocalStorage() //Obtener datos de local Storage
+    setCartNumber() //Actualizar numero dle carrito
+    setFeaturedProduct() //Setear el producto destacado
+    setProductList() //Setear la lista de productos
+    setModalListener() //Setear el listener del modal para asi activarse
+    setAddCartListener() //Setear todos los botones agregar al carrito
+}
 
 setupHome()

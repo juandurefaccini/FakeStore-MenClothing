@@ -109,7 +109,18 @@
     }
 
     .item__addToBasket {
-    /* margin-top: 6px; */
     background-color: black;
     color: white;
     }
+
+.addToBasketButton{
+    border-radius: 15px;
+}
+
+  
+  .btn-primary:hover {
+    color: #FFF;
+    background: rgba(58, 133, 191, 0.75);
+    border: 2px solid rgba(58, 133, 191, 0.75);
+  }
+  
