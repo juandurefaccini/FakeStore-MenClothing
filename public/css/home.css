@@ -1,0 +1,114 @@
+
+    #homeScreen{
+        margin-bottom: 50px;
+    }
+
+    .homeScreen_featuredProductContainer{
+        padding: var(--pagePadding);
+
+    }
+
+    .homeScreen__featuredProduct {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        /* padding: var(--pagePadding); */
+    }
+
+    .featuredProduct__img {
+    height: 40vh;
+    margin: 0 auto;
+    margin-top: 20px;
+    }
+    .featuredProduct__name {
+    font-size: 1.5rem;
+    margin-top: 4vh;
+    }
+    .featuredProduct__description {
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    }
+    .featuredProduct__prize {
+    font-size: 1.2rem;
+    color: var(--color1);
+    font-weight: 700;
+    }
+    .featuredProduct__addToBasket {
+    height: 2rem;
+    width: 100%;
+    }
+
+    #homeScreen__productList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: var(--pagePadding);
+    padding-right: var(--pagePadding);
+    }
+
+    .productListItemContainer{
+    width: 130px;
+    /* height: 250px;s */
+    }
+
+    .productListItemContainer button{
+    font-size: 0.9rem;
+    }
+
+    .productList__item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    height: 200px;
+    width: 130px;
+    margin-top: 50px;
+    }
+
+
+    .item__img {
+    display: flex;
+    justify-content: center;
+    }
+
+    .item__img img {
+    height: 110px;
+    /* width: 90%; */
+    max-width: 100%;
+    margin: auto;
+    }
+
+    .item__name {
+    margin-bottom: 0;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    }
+
+    .item__prize {
+    margin-bottom: 0;
+
+    font-size: 0.9rem;
+    }
+
+    .item__buy,
+    .item__addToBasket {
+    height: 2rem;
+    width: 100%;
+    font-size: 0.7rem;
+    align-items: flex-end;
+    }
+
+    .item__addToBasket {
+    /* margin-top: 6px; */
+    background-color: black;
+    color: white;
+    }

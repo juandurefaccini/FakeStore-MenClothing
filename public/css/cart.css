@@ -1,0 +1,66 @@
+#cartScreen {
+    position: absolute;
+    top: 8vh;
+    padding-left: var(--pagePadding);
+    padding-right: var(--pagePadding);
+    background-color: white;
+  }
+  
+  #cartScreen__emptyCartMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 94vh;
+    padding: var(--pagePadding);
+  }
+  
+  .emptyCartMessage__img {
+    width: 85%;
+    margin: 0 auto;
+  }
+  
+  .emptyCartMessage__msg {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    text-justify: auto;
+  }
+
+  .cartItem__img {
+    width: 100%;
+    /* height: 100%; */
+  }
+  
+  .cartItem__name {
+    font-size: 0.8rem;
+    width: 95%;
+  }
+  
+  .cartItem__name {
+    margin: 0 auto;
+  }
+  
+  .cartItem__prize {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  #cartSum {
+    margin-top: 20px;
+  }
+  
+  .cartSum__name {
+    font-weight: 600;
+  }
+  
+  .cartSumContainer{
+    position: relative;
+    /* text-align: end; */
+  }
+  
+  .cartSum__prizeSum {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: green;
+  }
+
+  
