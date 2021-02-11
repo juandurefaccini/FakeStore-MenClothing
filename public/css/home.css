@@ -4,8 +4,9 @@
     }
 
     .homeScreen_featuredProductContainer{
-        padding: var(--pagePadding);
-
+        padding-top: var(--pagePadding);
+        padding-left: var(--pagePadding);
+        padding-right: var(--pagePadding);
     }
 
     .homeScreen__featuredProduct {

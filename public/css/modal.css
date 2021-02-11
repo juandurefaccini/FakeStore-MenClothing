@@ -21,3 +21,20 @@
   .modalItem__description {
     padding-top: 20px;
   }
+
+  .modalItem__prize{
+    font-size: 1.5rem;
+    color: #666666;
+    font-weight: 600;
+  }
+
+  .modal-header{
+    background-color: black;
+    color: white;
+  }
+
+  .btn-close{
+    color: white;
+    background-color: white;
+    border-radius: 50%;
+  }
