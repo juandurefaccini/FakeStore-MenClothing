@@ -7,32 +7,35 @@ const cart = document.querySelector("#cartList");
 
 document.querySelectorAll(".navBar__name,#navBar__basket").forEach((elem) => {
   elem.addEventListener("click", () => {
-      window.location.pathname = 'home.html'
+    window.location.pathname = 'home.html'
   });
 });
 
+document.querySelector(".buyButton").addEventListener('click', () => {
+  alert('aca iria la api de mercadopago :)')
+})
 
-function getLocalStorage(){
-    products = localStorage.getItem('products');
-    products = JSON.parse(products);
-    productsInCart = localStorage.getItem('cartProducts');
-    productsInCart = JSON.parse(productsInCart);
-    let cartItemAmountLocalStorage = localStorage.getItem('cartItemAmount')
-    cartAmount = cartItemAmountLocalStorage
-    console.log(cartAmount)
-    if (cartAmount > 0){
-      document.querySelector("#cartSum").style.display = "block";
-      document.querySelector("#cartScreen__emptyCartMessage").style.display = "none";
-    }
-    else{
-      document.querySelector('.basket__numberContainer').style.display = 'none'
-      document.querySelector("#cartSum").style.display = "none";
-    }
+function getLocalStorage() {
+  products = localStorage.getItem('products');
+  products = JSON.parse(products);
+  productsInCart = localStorage.getItem('cartProducts');
+  productsInCart = JSON.parse(productsInCart);
+  let cartItemAmountLocalStorage = localStorage.getItem('cartItemAmount')
+  cartAmount = cartItemAmountLocalStorage
+  console.log(cartAmount)
+  if (cartAmount > 0) {
+    document.querySelector("#cartSum").style.display = "block";
+    document.querySelector("#cartScreen__emptyCartMessage").style.display = "none";
+  }
+  else {
+    document.querySelector('.basket__numberContainer').style.display = 'none'
+    document.querySelector("#cartSum").style.display = "none";
+  }
 }
 
-function setCartProducts(){
+function setCartProducts() {
   let newItem;
-  for(productId in productsInCart){
+  for (productId in productsInCart) {
     let cartProductId = productsInCart[productId];
     newItem = `<li class="list-group-item container">
         <div class="row productList__cartItem">
@@ -48,9 +51,8 @@ function setCartProducts(){
               >${products[cartProductId].title}</span>
           </div>
           <div class="col-3">
-            <span class="cartItem__prize">$${
-              products[cartProductId].price
-            }</span>
+            <span class="cartItem__prize">$${products[cartProductId].price
+      }</span>
           </div>
         </div>
       </li>`;
@@ -62,9 +64,9 @@ function setCartProducts(){
 }
 
 
-function setupCart(){
-    getLocalStorage()
-    setCartProducts()
+function setupCart() {
+  getLocalStorage()
+  setCartProducts()
 }
 
 

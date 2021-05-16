@@ -55,7 +55,7 @@
         </nav>
       </header>
     <!-- Pagina del carrito -->
-    <section id="cartScreen">
+    <section class="col-xl-12" id="cartScreen">
         <div id="cartScreen__emptyCartMessage">
           <img
             class="emptyCartMessage__img"
@@ -78,37 +78,12 @@
               <span class="cartSum__prizeSum"></span>
             </div>
           </div>
+          <div class="row">
+            <button class="buyButton">Comprar</button>
+          </div>
         </div>
       </section>
 
-          <!-- Modal de detalles del producto -->
-    <div class="modal fade" id="myModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Detalles del producto</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="modalItem">
-                <img
-                  src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                  alt=""
-                  class="modalItem__img"
-                />
-                <h2 class="modalItem__title"></h2>
-                <p class="modalItem__description"></p>
-                <p class="modalItem__prize"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script
